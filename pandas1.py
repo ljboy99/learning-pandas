@@ -1,7 +1,7 @@
 import pandas as pd
 ###CSV FILES ARE 2019 SURVEY DATA FROM
-###PLACED IN DATA FOLDER
 ###https://insights.stackoverflow.com/survey
+###PLACED IN DATA FOLDER
 ###i AM LEARNING FROM THIS PLAYLIST
 ###https://www.youtube.com/watch?v=ZyhVh-qRZPA&list=PL-osiE80TeTsWmV9i9c58mdDCSskIFdDS&index=1
 
