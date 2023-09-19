@@ -1,0 +1,99 @@
+Import pandas
+import pandas as pd
+
+Assign a dataframe out of a .csv
+>>> df = pd.read_csv('~/data/information.csv')
+
+What is ~ ?
+~ refers to the current directory you/your script is working in
+
+head method returns first 5 rows by default
+>>> df.head()
+>>> df.head(10)
+
+tails method returns last 5 rows by default
+>>> df.tail()
+
+Figure out datatypes
+>>> type(df)
+    pandas.core.frame.DataFrame
+
+Why is the datatype so long?
+That's a "fully qualified name",
+You only need to refer to the end,
+so 'df' has the type DataFrame
+
+Select column from csv
+>>> pm = df['parameter']
+This will select the column titled
+"parameter" from the dataframe
+
+You can now perform methods on individual columns
+>>> pm.head()
+
+You can control how much information is
+displayed from the dataframe
+>>> pd.set_option('display.max_columns', 10)
+
+Sometimes values are missing from DataFrames
+This may be represented by NaN or NaT
+
+Missing values which occur in integer or
+boolean data types are automatically
+converted to Float.
+
+Find the datatypes of each column
+df.dtypes
+
+datetime is not automatically read by read_csv()
+You can assign this datatype with parse_dates=
+>>> df = pd.read_csv('~/data/information.csv',
+... parse_dates=['starttime, stoptime'])
+
+Find out the size of your data with .shape
+>>> df.shape
+this will return the (rows, columns) of your dataframe
+
+Find out how many rows are in your dataframe
+>>> len(df) | df.shape[0]
+
+Find our how many columns are in your dataframe
+>>> df.shape[1]
+
+Count the total number of values (rows*columns)
+>>> df.size
+
+Change index from numbers to column data
+>>> df2 = df.set_index('column')
+df2 will have one less column than df
+because the column it is indexed by
+is technically removed
+
+.index will return the current labels for a series
+by default this will be numbers starting with 0
+This is a RangeIndex, and will be displayed as
+>>> RangeIndex(start=0, stop=100, step=1)
+Here 100 is the last index but it can go on for as
+many rows are included in the dataset
+
+You can get an array of the individual values
+with .values
+
+When you're importing a csv, you can assign
+an index right away
+>>> df = pd.read_csv('~/data/information.csv', index_col='column')
+
+List Slicing - In the following example, we will return
+every fourth object, between the items in index 100 and 120
+>>> df2[100:120:4]
+
+verify_integrity can be used to make sure that
+a column will have unique values and can be used
+as an index. You would use this like the following example:
+>>> df = pd.read_csv('~/data/information.csv')
+>>> df.set_index=('column', verify_integrity=True)
+
+If there are recurring keys, then verify_integrity=True
+will raise an error, and it will be clear that you
+may not use that column as an index
+
